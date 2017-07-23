@@ -3,6 +3,10 @@ package com.skeggib.accounts.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * Type of entries, can be used to group similar spending.
+ * @author skeggib
+ */
 @DatabaseTable(tableName = "entriestypes")
 public class EntryType {
 
@@ -13,11 +17,7 @@ public class EntryType {
 	private String name;
 	
 	public EntryType() {
-		this.name = new String();
-	}
-	
-	public EntryType(String name) {
-		this.name = name;
+
 	}
 
 	public int getId() {

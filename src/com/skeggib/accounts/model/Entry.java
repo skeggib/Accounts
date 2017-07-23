@@ -5,6 +5,11 @@ import java.util.Date;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * Entry composed of a label, a unique reference, a date, an amount and a type.
+ * An entry is linked to a bank account.
+ * @author skeggib
+ */
 @DatabaseTable(tableName = "entries")
 public class Entry {
 
@@ -30,9 +35,7 @@ public class Entry {
 	private EntryType type;
 	
 	public Entry() {
-		this.label = new String();
-		this.reference = new String();
-		this.date = new Date();
+
 	}
 
 	public int getId() {
@@ -73,6 +76,22 @@ public class Entry {
 
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+	
+	public BankAccount getBankAccount() {
+		return this.bankAccount;
+	}
+	
+	public void setBankAccount(BankAccount bank) {
+		this.bankAccount = bank;
+	}
+	
+	public EntryType getType() {
+		return this.type;
+	}
+	
+	public void setType(EntryType type) {
+		this.type = type;
 	}
 	
 }

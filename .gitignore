@@ -1,5 +1,4 @@
 *.sqlite
-lib/
 *.vpp.*
 
 # Eclipse

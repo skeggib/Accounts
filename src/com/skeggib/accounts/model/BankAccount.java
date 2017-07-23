@@ -3,28 +3,24 @@ package com.skeggib.accounts.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * Bank account.
+ * @author skeggib
+ */
 @DatabaseTable(tableName = "accounts")
 public class BankAccount {
     
-    @DatabaseField(id = true)
-    private int id;
+    @DatabaseField(generatedId = true)
+    private Integer id;
     
     @DatabaseField
     private String name;
     
-    @DatabaseField
+    @DatabaseField(unique = true)
     private String reference;
     
     public BankAccount() {
-        // ORMLite needs a no-arg constructor
-    	
-    	this.name = new String();
-    	this.reference = new String();
-    }
-    
-    public BankAccount(String name, String reference) {
-        this.name = name;
-        this.setReference(reference);
+
     }
 
 	public int getId() {
@@ -50,5 +46,30 @@ public class BankAccount {
     public void setReference(String reference) {
 		this.reference = reference;
 	}
+    
+    public String toString() {
+    	return "BankAccount:\n"
+    			+ "\tid: " + this.id + "\n"
+    			+ "\tname: " + this.name + "\n"
+    			+ "\treference: " + this.reference;
+    }
+    
+    public boolean equals(Object o) {
+    	if (!(o instanceof BankAccount))
+    		return false;
+    	
+    	BankAccount bank = (BankAccount)o;
+    	
+    	if (this.id != bank.id)
+    		return false;
+    	
+    	if (!this.name.equals(bank.name))
+    		return false;
+    	
+    	if (!this.reference.equals(bank.reference))
+    		return false;
+    	
+    	return true;
+    }
 	
 }
